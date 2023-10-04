@@ -11,13 +11,12 @@ app.use(express.json());
 app.use("/", router);
 app.listen(5000, () => console.log("Server Running"));
 
-// console.log('process.env.REACT_APP_GMAIL_AUTH', process.env.REACT_APP_GMAIL_AUTH)
+console.log('process.env.REACT_APP_GMAIL_AUTH', process.env.REACT_APP_GMAIL_AUTH)
 const contactEmail = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
     auth: {
         user: "mikekim.fullstack@gmail.com",
-        // pass: "Gmail135790!"
         pass: process.env.REACT_APP_GMAIL_AUTH
     },
 });
