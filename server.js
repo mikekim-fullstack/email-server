@@ -9,8 +9,7 @@ const app = express();
 app.use(cors({
     origin: ['http://localhost:3000',
         "http://127.0.0.1:3000",
-        'https://lalasol-bootcamp.web.app',
-        'https://unpkg.com',
+        'https://mike-portfolio-c2fc9.web.app',
     ]
 }));
 
