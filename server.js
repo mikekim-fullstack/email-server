@@ -6,7 +6,14 @@ require('dotenv').config()
 
 // server used to send send emails
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:3000',
+        "http://127.0.0.1:3000",
+        'https://lalasol-bootcamp.web.app',
+        'https://unpkg.com'
+    ]
+}));
+
 app.use(express.json());
 app.use("/", router);
 app.listen(5000, () => console.log("Server Running"));
