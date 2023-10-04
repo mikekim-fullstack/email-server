@@ -10,15 +10,18 @@ app.use(cors({
     origin: ['http://localhost:3000',
         "http://127.0.0.1:3000",
         'https://lalasol-bootcamp.web.app',
-        'https://unpkg.com'
+        'https://unpkg.com',
     ]
 }));
 
-app.use(express.json());
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 app.use("/", router);
-app.listen(5000, () => console.log("Server Running"));
+router.get('/', (req, res) => {
+    res.send('<h1>Welcome to Mike Email Server</h1>')
+})
 
-console.log('process.env.REACT_APP_GMAIL_AUTH', process.env.REACT_APP_GMAIL_AUTH)
+// console.log('process.env.REACT_APP_GMAIL_AUTH', process.env.REACT_APP_GMAIL_AUTH)
 const contactEmail = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
@@ -58,3 +61,6 @@ router.post("/contact", (req, res) => {
         }
     });
 });
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log("Server Running"));
